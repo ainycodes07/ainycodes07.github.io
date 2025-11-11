@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Radley:ital@0;1&display=swap');
+
+/* --- Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Base Styles --- */
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  background-color: #f4f1e8;
+  line-height: 1.6;
+  color: #191919;
+  overflow-x: hidden;
+}
+
+/* --- Logo --- */
+.logo {
+  display: block;
+  width: 100px;
+  margin: 2% auto;
+}
+
+/* --- Hero Section --- */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin: 0 10%;
+  padding: 4rem 0;
+  min-height: 80vh;
+  flex-direction: row;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero-text h1 {
+  font-family: "Radley", serif;
+  font-size: 50px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-text em {
+  font-style: italic;
+}
+
+.hero-text p {
+  font-size: 22px;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+/* --- CTA --- */
+.cta, .contact-cta {
+  font-family: "Radley", serif;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.cta { color: #9b4819; font-size: 24px; }
+.contact-cta { color: #fff; font-size: 24px; }
+
+.cta::before, .contact-cta::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #9b4819;
+  border-radius: 10px;
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 0.6s ease-out;
+}
+
+.cta:hover::before, .contact-cta:hover::before {
+  transform: scaleX(0);
+}
+
+/* --- Hero Image --- */
+.hero-image img {
+  max-width: 350px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* --- Projects --- */
+.projects {
+  margin: 0 5% 5% 5%;
+  text-align: center;
+}
+
+.projects-header {
+  margin-bottom: 50px;
+}
+
+.projects-header h2 {
+  font-family: "Radley", serif;
+  font-size: 40px;
+  margin-bottom: 0.5rem;
+  color: #153828;
+}
+
+.projects-header p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+
+.project-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 5%;
+}
+
+.project-card {
+  background-color: #153828;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 450px;
+}
+
+.card-image {
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 80%;
+  height: auto;
+  margin: 50px auto 20px auto;
+  border: 1px solid #909090;
+  border-radius: 4px;
+  display: block;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15);
+  transition: transform 0.6s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover img {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(255, 255, 255, 0.25);
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  padding: 1rem;
+  background-color: #153828;
+}
+
+.card-info .card-left { text-align: left; }
+.card-info .card-right {
+  text-align: right;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+p span { font-size: 12px; font-style: oblique; }
+
+/* --- Contact Section --- */
+.contact-section {
+  background-color: #9b4819;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  padding: 6rem 10%;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  min-height: 50vh;
+}
+
+.contact-left {
+  flex: 1 1 30%;
+  max-width: 600px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.contact-section h1 {
+  font-family: 'Radley', serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0 0 2rem;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: #d8a46f;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.visit-text {
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.social a {
+  font-family: 'Radley', serif;
+  font-size: 25px;
+  font-style: italic;
+  text-decoration: none;
+  color: inherit;
+}
+
+.info-item { display: flex; align-items: center; gap: 1rem; }
+.icon { width: 45px; height: 45px; }
+.label { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
+
+.contact-right a {
+  font-family: 'Radley', serif;
+  font-size: 1.05rem;
+  margin: 0.2rem 0 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- Responsive --- */
+@media (max-width:768px) {
+  .contact-container { flex-direction: column; align-items: flex-start; }
+  .contact-right { justify-content: flex-start; }
+  .contact-section h1 { font-size: 30px; }
+  .visit-text { font-size: 12px; }
+  .social a { font-size: 18px; }
+  .icon { width: 35px; height: 35px; }
+  .logo { width: 50px; }
+  .hero-content { margin: 0 5%; flex-direction: column; }
+  .hero-text h1 { font-size: 30px; }
+  .hero-text p { font-size: 14px; margin: 0 auto 1.5rem auto; }
+  .cta { font-size: 16px; }
+  .hero-image img { width: 200px; }
+  .projects-header h2 { font-size: 28px; }
+  .projects-header p { font-size: 14px; }
+  .card-info { font-size: 12px; }
+  p span { font-size: 10px; }
+  .project-card { width: 100%; max-width: 450px; }
+}
