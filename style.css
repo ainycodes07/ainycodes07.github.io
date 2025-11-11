@@ -34,7 +34,7 @@ body {
   flex-wrap: wrap;
   margin: 0 10%;
   padding: 4rem 0;
-  min-height: 80vh;
+  height: 80vh;
   flex-direction: row;
 }
 
@@ -264,7 +264,7 @@ hr {
   .social a { font-size: 18px; }
   .icon { width: 35px; height: 35px; }
   .logo { width: 50px; }
-  .hero-content { margin: 0 5%; flex-direction: column; }
+  .hero-content { margin: 0 5%; flex-direction: column; height:auto; }
   .hero-text h1 { font-size: 30px; }
   .hero-text p { font-size: 14px; margin: 0 auto 1.5rem auto; }
   .cta { font-size: 16px; }
@@ -275,5 +275,6 @@ hr {
   p span { font-size: 10px; }
   .project-card { width: 100%; max-width: 450px; }
 }
+
 
 
