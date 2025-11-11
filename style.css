@@ -21,6 +21,7 @@ body {
 .logo {
   display: block;
   width: 100px;
+  height:auto;
   margin: 2% auto;
 }
 
@@ -274,4 +275,5 @@ hr {
   p span { font-size: 10px; }
   .project-card { width: 100%; max-width: 450px; }
 }
+
 
