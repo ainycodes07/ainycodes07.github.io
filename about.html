@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Your Name</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:        #0d0d0b;
+  --bg-2:      #131311;
+  --bg-3:      #1b1b18;
+  --bg-4:      #222220;
+  --text:      #ede9e2;
+  --text-2:    #c5bfb5;
+  --muted:     #8a857c;
+  --faint:     #2c2c28;
+  --faint-2:   #232320;
+  --accent:    #c9b48a;
+  --accent-dim:#5e4e30;
+  --accent-g:  #c9b48a18;
+  --border:    #272723;
+  --border-2:  #333330;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text-2);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.75;font-weight:400;-webkit-font-smoothing:antialiased;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(13,13,11,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-name{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center;}
+.nav-links a{font-size:12px;letter-spacing:.06em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color .2s;padding:4px 0;border-bottom:1px solid transparent;}
+.nav-links a:hover{color:var(--text);border-color:var(--accent-dim);}
+.nav-links a.active{color:var(--accent);border-color:var(--accent-dim);}
+.nav-cta{font-family:'Syne',sans-serif;font-size:11px!important;font-weight:700!important;color:var(--bg)!important;background:var(--accent);padding:8px 20px!important;border:none!important;transition:background .2s!important;}
+.nav-cta:hover{background:var(--text)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);transition:transform .3s,opacity .3s,width .3s;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;width:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;z-index:199;background:rgba(13,13,11,.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:28px 56px 36px;flex-direction:column;opacity:0;transform:translateY(-8px);transition:opacity .25s,transform .25s;pointer-events:none;}
+.mobile-menu.open{display:flex;opacity:1;transform:translateY(0);pointer-events:all;}
+.mobile-menu a{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:18px 0;border-bottom:1px solid var(--border);transition:color .2s,padding-left .2s;}
+.mobile-menu a:hover{color:var(--text);padding-left:8px;}
+.mobile-menu a:last-child{border-bottom:none;color:var(--accent);}
+
+/* ── BTN ── */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 30px;transition:all .2s;cursor:pointer;border:none;line-height:1;}
+.btn-primary{background:var(--accent);color:#0d0d0b;}
+.btn-primary:hover{background:var(--text);color:#0d0d0b;}
+.btn-outline{background:transparent;color:var(--text-2);border:1px solid var(--border-2);}
+.btn-outline:hover{border-color:var(--accent-dim);color:var(--text);}
+.btn-sm{padding:10px 20px;font-size:11px;}
+
+/* ── SECTION ── */
+.section{padding:88px 56px;border-bottom:1px solid var(--border);}
+.section.alt{background:var(--bg-2);}
+.section.dark{background:var(--faint-2);}
+.sec-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:14px;margin-bottom:56px;}
+.sec-label::before{content:'';display:block;width:28px;height:1px;background:var(--accent-dim);}
+
+/* ── HERO: TWO-COL INTRO ── */
+.intro-section{padding:130px 56px 0;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.intro-watermark{position:absolute;bottom:-60px;right:-20px;font-family:'Syne',sans-serif;font-size:clamp(140px,22vw,320px);font-weight:700;color:transparent;-webkit-text-stroke:1px var(--faint);letter-spacing:-.04em;line-height:1;pointer-events:none;user-select:none;}
+.intro-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+.intro-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--accent-dim);}
+
+.intro-grid{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:start;padding-bottom:80px;}
+.intro-left{}
+.intro-left h1{font-family:'Instrument Serif',serif;font-size:clamp(44px,6vw,86px);font-weight:400;line-height:1.02;letter-spacing:-.02em;color:var(--text);margin-bottom:36px;}
+.intro-left h1 em{font-style:italic;color:var(--accent);}
+.intro-body{font-size:16px;color:var(--text-2);line-height:1.85;margin-bottom:16px;max-width:560px;}
+.intro-body-muted{font-size:14px;color:var(--muted);line-height:1.9;max-width:540px;margin-bottom:32px;}
+.intro-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;}
+
+/* Quick facts column */
+.intro-right{}
+.photo-box{width:100%;height:480px;background:var(--faint);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1px solid var(--border);margin-bottom:3px;}
+.photo-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.photo-size{font-size:10px;color:var(--accent-dim);}
+.quick-facts{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);}
+.qf-item{background:var(--bg-2);padding:16px 18px;}
+.qf-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.qf-val{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--text);}
+
+/* Availability banner */
+.avail-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 28px;background:var(--accent-g);border:1px solid var(--accent-dim);margin-top:28px;flex-wrap:wrap;}
+.avail-left{display:flex;align-items:center;gap:12px;}
+.avail-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.avail-text{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
+.avail-sub{font-size:11px;color:var(--muted);}
+
+/* ── WHAT I DO STRIP ── */
+.what-strip{background:var(--bg-2);border-bottom:1px solid var(--border);}
+.what-inner{display:grid;grid-template-columns:repeat(4,1fr);background:var(--border);gap:2px;}
+.what-item{background:var(--bg-2);padding:32px 28px;transition:background .2s;}
+.what-item:hover{background:var(--bg-3);}
+.what-num{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--accent-dim);letter-spacing:.1em;margin-bottom:16px;}
+.what-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.what-desc{font-size:12px;color:var(--muted);line-height:1.65;}
+
+/* ── STORY / APPROACH ── */
+.story-layout{display:grid;grid-template-columns:260px 1fr;gap:72px;align-items:start;}
+.story-nav{position:sticky;top:88px;}
+.story-nav-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.story-nav-links{display:flex;flex-direction:column;gap:0;border-left:1px solid var(--border);}
+.snl-item{font-size:12px;color:var(--muted);padding:10px 0 10px 18px;border-left:2px solid transparent;margin-left:-1px;cursor:pointer;transition:color .2s,border-color .2s;text-decoration:none;display:block;}
+.snl-item:hover,.snl-item.active{color:var(--text-2);border-color:var(--accent-dim);}
+.snl-item.active{color:var(--accent);border-color:var(--accent);}
+
+.story-content{}
+.story-block{margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid var(--border);}
+.story-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.sb-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+.sb-heading{font-family:'Instrument Serif',serif;font-size:clamp(24px,3vw,36px);font-weight:400;line-height:1.15;color:var(--text);margin-bottom:20px;}
+.sb-heading em{font-style:italic;color:var(--accent);}
+.sb-body{font-size:15px;color:var(--text-2);line-height:1.9;margin-bottom:14px;}
+.sb-body-muted{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:14px;}
+.sb-body-muted:last-child{margin-bottom:0;}
+
+/* Inline quote */
+.pull-quote{border-left:3px solid var(--accent-dim);padding:20px 24px;background:var(--bg-2);margin:28px 0;}
+.pull-quote p{font-family:'Instrument Serif',serif;font-size:18px;font-style:italic;color:var(--text-2);line-height:1.6;}
+
+/* Value list */
+.value-list{display:flex;flex-direction:column;gap:2px;background:var(--border);margin:24px 0;}
+.value-row{display:grid;grid-template-columns:200px 1fr;background:var(--bg-2);overflow:hidden;transition:background .2s;}
+.value-row:hover{background:var(--bg-3);}
+.value-key{padding:18px 20px;font-family:'Syne',sans-serif;font-size:12px;font-weight:600;color:var(--text);letter-spacing:.03em;border-right:1px solid var(--border);}
+.value-desc{padding:18px 22px;font-size:13px;color:var(--muted);line-height:1.65;}
+
+/* ── EDUCATION ── */
+.edu-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.edu-col-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.edu-list{display:flex;flex-direction:column;gap:2px;background:var(--border);}
+.edu-item{background:var(--bg-2);padding:22px 24px;display:flex;align-items:flex-start;gap:18px;transition:background .2s;}
+.edu-item:hover{background:var(--bg-3);}
+.edu-icon{width:36px;height:36px;background:var(--faint);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;margin-top:2px;}
+.edu-info{}
+.edu-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.edu-sub{font-size:12px;color:var(--muted);margin-bottom:4px;line-height:1.5;}
+.edu-year{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-dim);}
+.edu-status{display:inline-block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;margin-left:8px;font-weight:700;}
+.status-done{background:var(--accent-g);color:var(--accent);border:1px solid var(--accent-dim);}
+.status-progress{background:var(--faint);color:var(--muted);border:1px solid var(--border);}
+
+/* ── CERTIFICATIONS ── */
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+.cert-card{background:var(--bg-2);padding:28px 24px;transition:background .2s;position:relative;}
+.cert-card:hover{background:var(--bg-3);}
+.cert-issuer{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.cert-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3;}
+.cert-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px;}
+.cert-footer{display:flex;align-items:center;justify-content:space-between;}
+.cert-year{font-size:10px;color:var(--accent-dim);letter-spacing:.06em;}
+.cert-verify{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.cert-verify:hover{color:var(--accent);}
+.cert-coming{opacity:.5;}
+.cert-coming .cert-name{color:var(--muted);}
+.cert-badge{position:absolute;top:16px;right:16px;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;font-family:'Syne',sans-serif;font-weight:700;}
+.badge-earned{background:var(--accent-g);color:var(--accent);border:1px solid var(--accent-dim);}
+.badge-soon{background:var(--faint);color:var(--muted);border:1px solid var(--border);}
+
+/* ── SKILLS ── */
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+.skill-group{}
+.sg-title{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.skill-bars{display:flex;flex-direction:column;gap:14px;}
+.skill-bar{}
+.sb-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;}
+.sb-name{font-size:13px;color:var(--text-2);}
+.sb-level{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.sb-track{height:2px;background:var(--faint);width:100%;position:relative;}
+.sb-fill{height:100%;background:var(--accent-dim);position:absolute;left:0;top:0;transition:width 1.2s ease;}
+.sb-fill.animate{background:var(--accent);}
+
+/* ── TIMELINE ── */
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;}
+.timeline::before{content:'';position:absolute;left:11px;top:12px;bottom:12px;width:1px;background:var(--border);}
+.tl-item{display:grid;grid-template-columns:24px 1fr;gap:24px;padding-bottom:40px;position:relative;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{width:24px;height:24px;border-radius:50%;background:var(--bg-2);border:1px solid var(--border-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;position:relative;z-index:1;transition:border-color .2s,background .2s;}
+.tl-item:hover .tl-dot{border-color:var(--accent-dim);background:var(--bg-3);}
+.tl-dot-inner{width:6px;height:6px;border-radius:50%;background:var(--accent-dim);transition:background .2s;}
+.tl-item:hover .tl-dot-inner{background:var(--accent);}
+.tl-body{}
+.tl-year{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px;}
+.tl-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px;}
+.tl-desc{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* ── RESUME ── */
+.resume-section{background:var(--bg-2);}
+.resume-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.resume-left h2{font-family:'Instrument Serif',serif;font-size:clamp(30px,4vw,50px);font-weight:400;line-height:1.1;color:var(--text);margin-bottom:16px;}
+.resume-left h2 em{font-style:italic;color:var(--accent);}
+.resume-left p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:32px;}
+.resume-meta{display:flex;flex-direction:column;gap:12px;}
+.rm-row{display:flex;align-items:baseline;gap:16px;}
+.rm-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);width:72px;flex-shrink:0;}
+.rm-val{font-size:13px;color:var(--text-2);}
+.resume-right{}
+.cv-preview{width:100%;height:340px;background:var(--faint);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1px solid var(--border);margin-bottom:16px;}
+.cv-preview-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.cv-preview-size{font-size:10px;color:var(--accent-dim);}
+.cv-actions{display:flex;gap:10px;}
+
+/* ── TESTIMONIALS ── */
+.test-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);}
+.test-card{background:var(--bg-2);padding:44px 40px;position:relative;transition:background .2s;}
+.test-card:hover{background:var(--bg-3);}
+.test-mark{font-family:'Instrument Serif',serif;font-size:72px;color:var(--faint);position:absolute;top:20px;left:36px;line-height:1;pointer-events:none;user-select:none;}
+.test-placeholder{font-size:10px;color:var(--accent-dim);text-transform:uppercase;letter-spacing:.07em;border:1px dashed var(--faint);padding:4px 10px;display:inline-block;margin-bottom:8px;}
+.test-quote{font-family:'Instrument Serif',serif;font-size:17px;font-style:italic;color:var(--text-2);line-height:1.65;margin-bottom:28px;position:relative;z-index:1;}
+.test-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.test-role{font-size:12px;color:var(--muted);}
+
+/* ── CTA STRIP ── */
+.cta-strip{padding:80px 56px;background:var(--bg-2);border-bottom:1px solid var(--border);}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap;}
+.cta-text h3{font-family:'Instrument Serif',serif;font-size:clamp(28px,3.5vw,42px);font-weight:400;color:var(--text);margin-bottom:10px;}
+.cta-text h3 em{font-style:italic;color:var(--accent);}
+.cta-text p{font-size:14px;color:var(--muted);max-width:380px;line-height:1.8;}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0;}
+
+/* ── FOOTER ── */
+footer{padding:36px 56px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.footer-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text);}
+.footer-tagline{font-size:12px;color:var(--muted);}
+.footer-copy{font-size:11px;color:var(--accent-dim);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:.08s;}.reveal-d2{transition-delay:.16s;}.reveal-d3{transition-delay:.24s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1050px){
+  .intro-grid{grid-template-columns:1fr;}
+  .photo-box{height:320px;}
+  .story-layout{grid-template-columns:1fr;gap:40px;}
+  .story-nav{display:none;}
+  .edu-layout{grid-template-columns:1fr;}
+  .certs-grid{grid-template-columns:1fr 1fr;}
+  .skills-layout{grid-template-columns:1fr;}
+  .resume-layout{grid-template-columns:1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  .cta-inner{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:900px){
+  nav{padding:0 28px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .mobile-menu{padding:28px;}
+  .intro-section,.section,.cta-strip{padding-left:28px;padding-right:28px;}
+  .intro-watermark{display:none;}
+  .what-inner{grid-template-columns:1fr 1fr;}
+  footer{padding:28px;}
+}
+@media(max-width:600px){
+  .what-inner{grid-template-columns:1fr;}
+  .certs-grid{grid-template-columns:1fr;}
+  .value-row{grid-template-columns:1fr;}
+  .value-key{border-right:none;border-bottom:1px solid var(--border);padding-bottom:10px;}
+  .quick-facts{grid-template-columns:1fr 1fr;}
+  .intro-actions{flex-direction:column;}
+  .btn{width:100%;justify-content:center;}
+  .cv-actions{flex-direction:column;}
+  .cta-btns{flex-direction:column;width:100%;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-name">Qurat Ul Ain</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="#" class="active">About</a></li>
+<!--    <li><a href="#">Learn</a></li>-->
+    <li><a href="contact.html" class="nav-cta">Hire Me</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="work.html">Work</a>
+  <a href="services.html">Services</a>
+  <a href="#">About</a>
+<!--  <a href="#">Learn</a>-->
+  <a href="contact.html">Hire Me →</a>
+</div>
+
+<!-- ══ INTRO ══ -->
+<div class="intro-section">
+  <div class="intro-watermark" aria-hidden="true">About.</div>
+  <div class="intro-eyebrow">About</div>
+
+  <div class="intro-grid">
+    <div class="intro-left reveal">
+      <h1>The work<br>is the<br><em>introduction.</em></h1>
+      <p class="intro-body">
+        I'm a freelance designer, web developer, and content writer based in Pakistan. I work independently — no agency overhead, no team handoffs. You deal with one person who does the work.
+      </p>
+      <p class="intro-body-muted">
+        My background spans graphic design, front-end web development, and written content. These aren't three separate freelancers — they're one person who understands how design, code, and copy have to work together to be effective.
+      </p>
+      <div class="intro-actions">
+        <a href="#resume" class="btn btn-primary">Download Resume</a>
+        <a href="services-page.html#hire" class="btn btn-outline">Work With Me</a>
+      </div>
+
+      <div class="avail-bar reveal">
+        <div class="avail-left">
+          <div class="avail-dot"></div>
+          <div>
+            <div class="avail-text">Currently available</div>
+            <div class="avail-sub">Open to new freelance projects</div>
+          </div>
+        </div>
+        <a href="services-page.html#hire" class="btn btn-outline btn-sm">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="intro-right reveal reveal-d1">
+      <div class="photo-box">
+        <span class="photo-label">Your Photo or Logo Mark</span>
+        <span class="photo-size">480 × 560px recommended</span>
+      </div>
+      <div class="quick-facts">
+        <div class="qf-item">
+          <div class="qf-label">Based in</div>
+          <div class="qf-val">Pakistan</div>
+        </div>
+        <div class="qf-item">
+          <div class="qf-label">Work type</div>
+          <div class="qf-val">Remote only</div>
+        </div>
+        <div class="qf-item">
+          <div class="qf-label">Experience</div>
+          <div class="qf-val">2+ Years learning</div>
+        </div>
+        <div class="qf-item">
+          <div class="qf-label">Response</div>
+          <div class="qf-val">24–48 hours</div>
+        </div>
+        <div class="qf-item">
+          <div class="qf-label">Clients</div>
+          <div class="qf-val">2 served</div>
+        </div>
+        <div class="qf-item">
+          <div class="qf-label">Language</div>
+          <div class="qf-val">English · Urdu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WHAT I DO STRIP ══ -->
+<div class="what-strip reveal">
+  <div class="what-inner">
+    <div class="what-item">
+      <div class="what-num">01</div>
+      <div class="what-name">Graphic Design</div>
+      <div class="what-desc">Visual assets for social media, advertising, and print — built in Canva, delivered ready to use.</div>
+    </div>
+    <div class="what-item">
+      <div class="what-num">02</div>
+      <div class="what-name">Web Development</div>
+      <div class="what-desc">Design-to-code builds in clean HTML/CSS. Responsive, semantic, deployable — no page builders.</div>
+    </div>
+    <div class="what-item">
+      <div class="what-num">03</div>
+      <div class="what-name">Content Writing</div>
+      <div class="what-desc">Website copy, documentation, blogs, eBooks — written with purpose, not just word count.</div>
+    </div>
+    <div class="what-item">
+      <div class="what-num">04</div>
+      <div class="what-name">Courses & Teaching</div>
+      <div class="what-desc">Structured learning resources on design, development, and writing. In production — coming to Gumroad.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STORY / APPROACH ══ -->
+<section class="section" id="approach">
+  <div class="sec-label">Background & Approach</div>
+  <div class="story-layout">
+
+    <div class="story-nav" aria-hidden="true">
+      <div class="story-nav-label">On this page</div>
+      <div class="story-nav-links">
+        <a class="snl-item active" href="#approach">Background</a>
+        <a class="snl-item" href="#education">Education</a>
+        <a class="snl-item" href="#certifications">Certifications</a>
+        <a class="snl-item" href="#skills">Skills</a>
+        <a class="snl-item" href="#timeline">Timeline</a>
+        <a class="snl-item" href="#resume">Resume</a>
+      </div>
+    </div>
+
+    <div class="story-content">
+
+      <div class="story-block reveal">
+        <div class="sb-label">How I got here</div>
+        <div class="sb-heading">Started building.<br><em>Kept going.</em></div>
+        <p class="sb-body">I didn't start with a plan to do all of this. I started with one thing — learning how to build websites — and the rest followed naturally. Design made the sites look right. Writing made them say the right thing. Teaching made me actually understand what I was doing.</p>
+        <p class="sb-body-muted">All three skills developed together, which is why they work well together when a client needs more than one. There's no handoff between "the designer" and "the developer" — it's the same person thinking about the whole thing at once.</p>
+        <div class="pull-quote">
+          <p>"The work is cleaner when one person understands all the parts."</p>
+        </div>
+        <p class="sb-body-muted">I'm early in my freelance career. Two clients, six projects, several self-initiated builds. I'm not pretending otherwise. What I can say is that the work is done properly, communicated clearly, and delivered on time.</p>
+      </div>
+
+      <div class="story-block reveal">
+        <div class="sb-label">How I work</div>
+        <div class="sb-heading">Direct.<br><em>No performance.</em></div>
+        <p class="sb-body">I don't do calls unless necessary. I prefer written communication — it's clearer, documented, and doesn't waste either person's time. Most projects can be scoped, agreed on, and delivered entirely over email.</p>
+        <p class="sb-body-muted">I work quietly and send updates when there's something to show. I ask one question when I need clarification, not five. I flag problems early instead of hoping they resolve themselves.</p>
+        <div class="value-list">
+          <div class="value-row">
+            <div class="value-key">Communication</div>
+            <div class="value-desc">Email-first. Replies within 24–48 hours on weekdays. No disappearing mid-project.</div>
+          </div>
+          <div class="value-row">
+            <div class="value-key">Scope</div>
+            <div class="value-desc">Agreed upfront, in writing. Nothing changes without discussion.</div>
+          </div>
+          <div class="value-row">
+            <div class="value-key">Revisions</div>
+            <div class="value-desc">Two rounds included in every project. Additional rounds are scoped separately.</div>
+          </div>
+          <div class="value-row">
+            <div class="value-key">Delivery</div>
+            <div class="value-desc">On the agreed date. If something changes, I'll tell you before the deadline, not after.</div>
+          </div>
+          <div class="value-row">
+            <div class="value-key">Quality</div>
+            <div class="value-desc">I don't send rough drafts as finals. What you receive is complete and ready to use.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-block reveal">
+        <div class="sb-label">What I'm building toward</div>
+        <div class="sb-heading">More work.<br><em>Better work.</em></div>
+        <p class="sb-body">Right now the focus is on taking on more projects, building a stronger portfolio, and developing the course side of things. More certifications are in progress. More client work is the goal.</p>
+        <p class="sb-body-muted">I'm not trying to scale to an agency. I'm building a practice where the work is good, the clients are straightforward, and the output is something I'd put my name on — which I do, every time.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ EDUCATION ══ -->
+<section class="section alt" id="education">
+  <div class="sec-label">Education</div>
+  <div class="edu-layout reveal">
+    <div>
+      <div class="edu-col-label">Formal Education</div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-icon">◻</div>
+          <div class="edu-info">
+            <div class="edu-title">BSCS <span class="edu-status status-progress">Completed</span></div>
+            <div class="edu-sub">Virtual Univeristy of Pakistan</div>
+            <div class="edu-year">2019 – 2024</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-icon">◻</div>
+          <div class="edu-info">
+            <div class="edu-title">Intermediate <span class="edu-status status-done">Completed</span></div>
+            <div class="edu-sub">BISE Gujranwala</div>
+            <div class="edu-year">2017 – 2019</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="edu-col-label">Self-Directed Learning</div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-icon">◈</div>
+          <div class="edu-info">
+            <div class="edu-title">freeCodeCamp — Web Development Curriculum <span class="edu-status status-progress">Ongoing</span></div>
+            <div class="edu-sub">Responsive Web Design · JavaScript · Front End Libraries</div>
+            <div class="edu-year">2023 – Present</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-icon">◈</div>
+          <div class="edu-info">
+            <div class="edu-title">Canva Design School <span class="edu-status status-done">Completed</span></div>
+            <div class="edu-sub">Graphic Design Fundamentals · Visual Communication</div>
+            <div class="edu-year">2026</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-icon">◈</div>
+          <div class="edu-info">
+            <div class="edu-title">Django Web Framework — Self-study <span class="edu-status status-done">Completed</span></div>
+            <div class="edu-sub">Python · Models · Views · Templates · Admin</div>
+            <div class="edu-year">2024</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-icon">◈</div>
+          <div class="edu-info">
+            <div class="edu-title">11ty Static Site Generator — Self-study <span class="edu-status status-done">Completed</span></div>
+            <div class="edu-sub">Nunjucks · Collections · Data Cascade · Build Pipelines</div>
+            <div class="edu-year">2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CERTIFICATIONS ══ -->
+<section class="section" id="certifications">
+  <div class="sec-label">Certifications</div>
+  <div class="certs-grid reveal">
+
+    <div class="cert-card">
+      <div class="cert-badge badge-earned">Earned</div>
+      <div class="cert-issuer">Canva</div>
+      <div class="cert-name">Canva Essentials</div>
+      <div class="cert-desc">Core platform proficiency — layouts, typography, brand kits, templates, and export workflows.</div>
+      <div class="cert-footer">
+        <span class="cert-year">2026</span>
+        <a href="https://www.canva.com/design-school/certification-award/5ef40898-c2ef-44d4-af8a-ae5325a70f95" class="cert-verify">Verify →</a>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-badge badge-earned">Earned</div>
+      <div class="cert-issuer">Canva</div>
+      <div class="cert-name">Graphic Design Essentials</div>
+      <div class="cert-desc">Design fundamentals — hierarchy, color theory, composition, and visual communication principles.</div>
+      <div class="cert-footer">
+        <span class="cert-year">2026</span>
+        <a href="https://www.canva.com/design-school/certification-award/474fb788-c461-4d87-b3a6-5d915b34457e" class="cert-verify">Verify →</a>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-badge badge-earned">Earned</div>
+      <div class="cert-issuer">freeCodeCamp</div>
+      <div class="cert-name">Responsive Web Design</div>
+      <div class="cert-desc">HTML5, CSS3, Flexbox, CSS Grid, accessibility, and responsive design across all screen sizes.</div>
+      <div class="cert-footer">
+        <span class="cert-year">2024</span>
+        <a href="https://freecodecamp.org/certification/ainycodes/responsive-web-design" class="cert-verify">Verify →</a>
+      </div>
+    </div>
+    <!--
+
+    <div class="cert-card cert-coming">
+      <div class="cert-badge badge-soon">In Progress</div>
+      <div class="cert-issuer">freeCodeCamp</div>
+      <div class="cert-name">JavaScript Algorithms & Data Structures</div>
+      <div class="cert-desc">Variables, arrays, objects, functions, OOP, functional programming, and algorithm challenges.</div>
+      <div class="cert-footer">
+        <span class="cert-year">Expected 2025</span>
+      </div>
+    </div>
+
+    <div class="cert-card cert-coming">
+      <div class="cert-badge badge-soon">In Progress</div>
+      <div class="cert-issuer">freeCodeCamp</div>
+      <div class="cert-name">Front End Development Libraries</div>
+      <div class="cert-desc">Bootstrap, jQuery, Sass, React, Redux — building interactive front-end applications.</div>
+      <div class="cert-footer">
+        <span class="cert-year">Expected 2025</span>
+      </div>
+    </div>
+
+    <div class="cert-card cert-coming">
+      <div class="cert-badge badge-soon">Planned</div>
+      <div class="cert-issuer">To be decided</div>
+      <div class="cert-name">Content & Copywriting Certification</div>
+      <div class="cert-desc">Formal recognition in copywriting and content strategy. Researching platforms currently.</div>
+      <div class="cert-footer">
+        <span class="cert-year">2025</span>
+      </div>
+    </div>
+  -->
+
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section class="section alt" id="skills">
+  <div class="sec-label">Skills</div>
+  <div class="skills-layout reveal">
+
+    <div class="skill-group">
+      <div class="sg-title">Design</div>
+      <div class="skill-bars">
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Canva</span><span class="sb-level">Proficient</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="82%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Layout & Composition</span><span class="sb-level">Proficient</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="75%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Typography</span><span class="sb-level">Intermediate</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="68%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Figma (reading designs)</span><span class="sb-level">Intermediate</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="60%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="sg-title">Web Development</div>
+      <div class="skill-bars">
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">HTML5 / CSS3</span><span class="sb-level">Proficient</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Responsive Design</span><span class="sb-level">Proficient</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="78%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">11ty / Static Sites</span><span class="sb-level">Intermediate</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="65%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Django / Python</span><span class="sb-level">Intermediate</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="58%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="sg-title">Content Writing</div>
+      <div class="skill-bars">
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Copywriting</span><span class="sb-level">Intermediate</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="70%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Technical Documentation</span><span class="sb-level">Intermediate</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="68%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Blog & Long-form Writing</span><span class="sb-level">Proficient</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="74%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">eBook Writing & Layout</span><span class="sb-level">Intermediate</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="60%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="sg-title">Tools & Other</div>
+      <div class="skill-bars">
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Git / GitHub</span><span class="sb-level">Intermediate</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="62%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Netlify / Vercel deployment</span><span class="sb-level">Comfortable</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="70%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">English (written)</span><span class="sb-level">Fluent</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="90%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <div class="sb-top"><span class="sb-name">Urdu (written)</span><span class="sb-level">Native</span></div>
+          <div class="sb-track"><div class="sb-fill" data-width="95%"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TIMELINE ══ 
+<section class="section" id="timeline">
+  <div class="sec-label">Timeline</div>
+  <div style="max-width:640px;" class="reveal">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-body">
+          <div class="tl-year">2023</div>
+          <div class="tl-title">Started learning web development</div>
+          <div class="tl-desc">Began with freeCodeCamp's HTML & CSS curriculum. Built first static pages. Completed Responsive Web Design certification.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-body">
+          <div class="tl-year">2023</div>
+          <div class="tl-title">Started graphic design</div>
+          <div class="tl-desc">Completed Canva Essentials and Graphic Design Essentials. Applied skills to social media content and personal projects.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-body">
+          <div class="tl-year">2024</div>
+          <div class="tl-title">First client work</div>
+          <div class="tl-desc">Delivered social media post designs, ad creatives, and a pamphlet for first client. Second client followed shortly after.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-body">
+          <div class="tl-year">2024</div>
+          <div class="tl-title">Built first multi-page website</div>
+          <div class="tl-desc">Converted a Figma design into a full 5-page responsive business website using HTML, CSS, and JS.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-body">
+          <div class="tl-year">2024</div>
+          <div class="tl-title">Django academic project</div>
+          <div class="tl-desc">Built a full-stack e-commerce application with Django — product catalog, cart, authentication, and order management.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-body">
+          <div class="tl-year">2025 — Now</div>
+          <div class="tl-title">Portfolio, more certs, first courses</div>
+          <div class="tl-desc">Building this portfolio. Completing JavaScript and React certifications. Working on first Gumroad courses. Open to freelance projects.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+<!-- ══ RESUME ══ -->
+<section class="section resume-section alt" id="resume">
+  <div class="sec-label">Resume</div>
+  <div class="resume-layout reveal">
+    <div class="resume-left">
+      <h2>Download my<br><em>resume.</em></h2>
+      <p>One page. Everything relevant — skills, certifications, projects, and contact details. Updated regularly as new work and certifications are added.</p>
+      <div class="resume-meta">
+        <div class="rm-row">
+          <span class="rm-label">Format</span>
+          <span class="rm-val">PDF</span>
+        </div>
+        <div class="rm-row">
+          <span class="rm-label">Updated</span>
+          <span class="rm-val">2026</span>
+        </div>
+        <div class="rm-row">
+          <span class="rm-label">Includes</span>
+          <span class="rm-val">Skills · Certs · Projects · Contact</span>
+        </div>
+      </div>
+    </div>
+    <div class="resume-right">
+      <img src="images/resume-preview.png" alt="" style="width: 100%; height:100%; object-fit:cover;">
+      <div class="cv-actions">
+        <a href="Resume_Qurat_Ul_Ain.pdf" class="btn btn-primary" download>Download PDF →</a>
+        <a href="Resume_Qurat_Ul_Ain.pdf" class="btn btn-outline">View Online →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ 
+<section class="section dark">
+  <div class="sec-label">What Clients Say</div>
+  <div class="test-grid reveal">
+    <div class="test-card">
+      <div class="test-mark" aria-hidden="true">"</div>
+      <div class="test-placeholder">Replace with real testimonial</div>
+      <p class="test-quote">Delivered exactly what was needed — clean, on time, no back-and-forth. The files were ready to use without any changes.</p>
+      <div class="test-name">Client Name</div>
+      <div class="test-role">Business Owner</div>
+    </div>
+    <div class="test-card">
+      <div class="test-mark" aria-hidden="true">"</div>
+      <div class="test-placeholder">Replace with real testimonial</div>
+      <p class="test-quote">Communication was clear throughout. The website matched the design exactly and worked on mobile from the start.</p>
+      <div class="test-name">Client Name</div>
+      <div class="test-role">Founder</div>
+    </div>
+  </div>
+</section>
+-->
+<!-- ══ CTA ══ -->
+<div class="cta-strip reveal">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h3>Enough about me.<br><em>Let's talk about your project.</em></h3>
+      <p>Tell me what you need. I'll reply with a clear plan, timeline, and price within 48 hours.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="services.html#hire" class="btn btn-primary">Start a Project →</a>
+      <a href="work.html" class="btn btn-outline">View My Work</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-name">Your Name</div>
+    <div class="footer-tagline">Freelance Designer · Developer · Writer</div>
+  </div>
+  <div style="display:flex;gap:24px;">
+    <a href="work.html" style="font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--text-2)'" onmouseout="this.style.color='var(--muted)'">Work</a>
+    <a href="services-page.html" style="font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--text-2)'" onmouseout="this.style.color='var(--muted)'">Services</a>
+    <a href="index.html" style="font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--text-2)'" onmouseout="this.style.color='var(--muted)'">Home</a>
+  </div>
+  <div class="footer-copy">© 2026 · All rights reserved</div>
+</footer>
+
+<script>
+// Nav
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), {passive:true});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+let mOpen = false;
+hamburger.addEventListener('click', () => {
+  mOpen = !mOpen;
+  hamburger.classList.toggle('open', mOpen);
+  hamburger.setAttribute('aria-expanded', mOpen);
+  if(mOpen){ mobileMenu.style.display='flex'; requestAnimationFrame(()=>mobileMenu.classList.add('open')); }
+  else{ mobileMenu.classList.remove('open'); setTimeout(()=>{ if(!mOpen) mobileMenu.style.display='none'; },250); }
+});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  mOpen=false; hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded',false);
+  mobileMenu.classList.remove('open'); setTimeout(()=>mobileMenu.style.display='none',250);
+}));
+
+// Scroll reveal + skill bar animation
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      // Animate skill bars inside this element
+      e.target.querySelectorAll('.sb-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width;
+        bar.classList.add('animate');
+      });
+      ro.unobserve(e.target);
+    }
+  });
+}, {threshold:0.1, rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// Sidebar nav active state on scroll
+const sections = document.querySelectorAll('section[id], div[id]');
+const sideLinks = document.querySelectorAll('.snl-item');
+if(sideLinks.length){
+  const sro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        sideLinks.forEach(l => l.classList.remove('active'));
+        const match = document.querySelector(`.snl-item[href="#${e.target.id}"]`);
+        if(match) match.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-30% 0px -60% 0px'});
+  sections.forEach(s => sro.observe(s));
+}
+</script>
+</body>
+</html>
