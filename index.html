@@ -17,6 +17,9 @@
   <!-- Google Sans Flex Alternative -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -25,8 +28,13 @@
   <!-- LOADER -->
   <div class="loader" id="loader">
 
-    <img src="images/3.png" alt="Dark Logo" class="loader-logo dark-loader-logo">
-    <img src="images/6.png" alt="Light Logo" class="loader-logo light-loader-logo">
+    <div class="loader-logo-wrap">
+
+      <img src="images/3.png" alt="" class="loader-logo dark-loader-logo">
+
+      <img src="images/6.png" alt="" class="loader-logo light-loader-logo">
+
+    </div>
 
   </div>
 
@@ -70,6 +78,156 @@
 
   </header>
 
+
+  <!-- HERO SLIDER -->
+
+  <section class="hero">
+
+    <div class="slider">
+
+      <!-- SLIDES -->
+
+      <div class="slide active" data-link="project-detail-1.html">
+        <img src="images/1.png" alt="">
+      </div>
+
+      <div class="slide" data-link="project-detail-1.html">
+        <img src="images/2.png" alt="">
+      </div>
+
+      <div class="slide" data-link="project-detail-1.html">
+        <img src="images/4.png" alt="">
+      </div>
+
+      <div class="slide" data-link="project-detail-1.html">
+        <img src="images/5.png" alt="">
+      </div>
+
+      <!-- BUTTONS -->
+
+      <button class="slider-btn prev" id="prevBtn">
+        &#10094;
+      </button>
+
+      <button class="slider-btn next" id="nextBtn">
+        &#10095;
+      </button>
+
+      <!-- DOTS -->
+
+      <div class="slider-dots" id="sliderDots">
+
+        <button class="dot active"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <!-- LEFT -->
+
+    <div class="footer-left">
+
+      <!-- DESKTOP ICONS -->
+
+      <div class="social-icons desktop-socials">
+
+        <a href="#">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="#">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+
+        <a href="#">
+          <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="#">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </a>
+
+      </div>
+
+      <!-- MOBILE MENU -->
+
+      <div class="mobile-social-wrapper">
+
+        <button class="mobile-social-btn" id="mobileSocialBtn">
+
+          <i class="fa-solid fa-link"></i>
+
+        </button>
+
+        <div class="mobile-social-menu" id="mobileSocialMenu">
+
+
+          <a href="#">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="#">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+
+          <a href="#">
+            <i class="fa-brands fa-github"></i>
+          </a>
+
+          <a href="#">
+            <i class="fa-solid fa-bag-shopping"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- CENTER -->
+
+    <div class="footer-center">
+
+      <button class="footer-dropdown-btn" id="footerDropdownBtn">
+
+        Site Information
+
+        <i class="fa-solid fa-chevron-up"></i>
+
+      </button>
+
+      <div class="footer-dropdown" id="footerDropdown">
+
+        <a href="#">Accessibility Statement</a>
+        <a href="#">Site Instructions</a>
+        <a href="#">Privacy Policy</a>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="footer-right">
+
+      <p>
+        © 2026 Qurat Ul Ain. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
   <!-- FULLSCREEN MENU -->
   <div class="fullscreen-menu" id="fullscreenMenu">
 
@@ -83,8 +241,10 @@
     </nav>
 
   </div>
+  <script src="js/main.js"></script>
 
-  <script src="script.js"></script>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
 
 </body>
 

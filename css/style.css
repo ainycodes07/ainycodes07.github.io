@@ -1,4 +1,6 @@
-/* RESET */
+/* =========================
+   RESET
+========================= */
 
 * {
     margin: 0;
@@ -11,9 +13,12 @@ body {
     width: 100%;
     overflow-x: hidden;
     font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
 }
 
-/* VARIABLES */
+/* =========================
+   VARIABLES
+========================= */
 
 :root {
 
@@ -37,46 +42,90 @@ body.light-mode {
     --accent: #6B5FB5;
 }
 
-/* BODY */
+/* =========================
+   BODY
+========================= */
 
 body {
+    min-height: 100vh;
+
     background: var(--bg);
     color: var(--text);
-    transition: background var(--transition),
+
+    transition:
+        background var(--transition),
         color var(--transition);
 }
+body {
+    cursor: none;
+}
+/* =========================
+   CUSTOM CURSOR
+========================= */
 
-/* LOADER */
+.cursor-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+}
+
+.cursor-ring {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99998;
+}
+
+/* =========================
+   LOADER
+========================= */
 
 .loader {
     position: fixed;
     inset: 0;
+
     background: var(--bg);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    z-index: 9999;
+    z-index: 999999;
 
-    transition: opacity 0.8s ease,
-        visibility 0.8s ease;
+    overflow: hidden;
+
+    transition: opacity 0.8s ease;
 }
 
 .loader.hide {
     opacity: 0;
-    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-logo-wrap {
+    width: 140px;
+    overflow: hidden;
 }
 
 .loader-logo {
-    position: absolute;
-    width: 120px;
+    width: 100%;
+    display: block;
 
-    opacity: 0;
+    clip-path: inset(0 0 0 100%);
 
-    transform: translateX(220px);
-
-    animation: logoReveal 1.3s ease forwards;
+    animation:
+        logoReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .light-loader-logo {
@@ -93,16 +142,27 @@ body.light-mode .light-loader-logo {
 
 @keyframes logoReveal {
 
+    from {
+        clip-path: inset(0 0 0 100%);
+        opacity: 0.15;
+    }
+
     to {
+        clip-path: inset(0 0 0 0);
         opacity: 1;
-        transform: translateX(0);
     }
 
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
     width: 100%;
     height: 100px;
 
@@ -112,15 +172,9 @@ body.light-mode .light-loader-logo {
     align-items: center;
     justify-content: space-between;
 
-    position: fixed;
-    top: 0;
-    left: 0;
+    z-index: 1000;
 
-    z-index: 500;
-
-    backdrop-filter: blur(18px);
-
-    background: rgba(10, 10, 14, 0.45);
+    background: var(--bg);
 
     border-bottom: 1px solid var(--border);
 
@@ -128,10 +182,12 @@ body.light-mode .light-loader-logo {
 }
 
 body.light-mode .header {
-    background: rgba(255, 255, 255, 0.45);
+    background: var(--bg);
 }
 
-/* LEFT */
+/* =========================
+   HEADER LEFT
+========================= */
 
 .header-left {
     display: flex;
@@ -139,10 +195,10 @@ body.light-mode .header {
     gap: 18px;
 }
 
-/* LOGOS */
-
 .header-logo {
     width: 56px;
+    display: block;
+
     transition: var(--transition);
 }
 
@@ -158,20 +214,24 @@ body.light-mode .light-logo {
     display: block;
 }
 
-/* TOGGLE */
+/* =========================
+   TOGGLE
+========================= */
 
 .theme-toggle {
     width: 62px;
     height: 34px;
 
     border: none;
-    cursor: pointer;
+    outline: none;
+
+    cursor: inherit;
+
+    border-radius: 999px;
 
     background: var(--surface);
 
     border: 1px solid var(--border);
-
-    border-radius: 999px;
 
     position: relative;
 
@@ -179,16 +239,16 @@ body.light-mode .light-logo {
 }
 
 .toggle-circle {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+
     width: 24px;
     height: 24px;
 
     border-radius: 50%;
 
     background: var(--accent);
-
-    position: absolute;
-    top: 4px;
-    left: 4px;
 
     transition: var(--transition);
 }
@@ -197,7 +257,9 @@ body.light-mode .toggle-circle {
     left: 32px;
 }
 
-/* CENTER */
+/* =========================
+   HEADER CENTER
+========================= */
 
 .header-center {
     text-align: center;
@@ -205,50 +267,49 @@ body.light-mode .toggle-circle {
 
 .header-center h1 {
     font-family: 'Playfair Display', serif;
+
     font-size: 1.5rem;
     font-weight: 600;
+
     letter-spacing: 0.03em;
 }
 
 .header-center p {
     margin-top: 2px;
 
-    font-size: 0.78rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-
     color: var(--muted);
+
+    font-size: 0.78rem;
+
+    letter-spacing: 0.3em;
+
+    text-transform: uppercase;
 }
 
-/* RIGHT */
-
-.header-right {
-    display: flex;
-    align-items: center;
-}
-
-/* MENU BTN */
+/* =========================
+   MENU BUTTON
+========================= */
 
 .menu-btn {
     width: 52px;
     height: 52px;
 
-    background: transparent;
+    background: none;
     border: none;
 
-    cursor: pointer;
+    cursor: inherit;
 
     position: relative;
 }
 
 .menu-btn span {
+    position: absolute;
+    left: 50%;
+
     width: 30px;
     height: 2px;
 
     background: var(--text);
-
-    position: absolute;
-    left: 50%;
 
     transform: translateX(-50%);
 
@@ -263,19 +324,23 @@ body.light-mode .toggle-circle {
     top: 30px;
 }
 
-/* ACTIVE */
-
 .menu-btn.active span:nth-child(1) {
     top: 25px;
-    transform: translateX(-50%) rotate(45deg);
+
+    transform:
+        translateX(-50%) rotate(45deg);
 }
 
 .menu-btn.active span:nth-child(2) {
     top: 25px;
-    transform: translateX(-50%) rotate(-45deg);
+
+    transform:
+        translateX(-50%) rotate(-45deg);
 }
 
-/* FULLSCREEN MENU */
+/* =========================
+   FULLSCREEN MENU
+========================= */
 
 .fullscreen-menu {
     position: fixed;
@@ -290,9 +355,9 @@ body.light-mode .toggle-circle {
     opacity: 0;
     visibility: hidden;
 
-    transition: var(--transition);
+    z-index: 900;
 
-    z-index: 400;
+    transition: var(--transition);
 }
 
 .fullscreen-menu.active {
@@ -310,8 +375,9 @@ body.light-mode .toggle-circle {
     text-decoration: none;
 
     font-family: 'Playfair Display', serif;
-
+cursor: inherit;
     font-size: 3rem;
+
     color: var(--text);
 
     transition: var(--transition);
@@ -321,9 +387,422 @@ body.light-mode .toggle-circle {
     color: var(--accent);
 }
 
-/* MOBILE */
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    width: 100%;
+    height: 90vh;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* =========================
+   SLIDER
+========================= */
+
+.slider {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+}
+
+/* =========================
+   SLIDES
+========================= */
+
+.slide {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 1s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+/* =========================
+   SLIDER BUTTONS
+========================= */
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    background: rgba(0, 0, 0, 0.22);
+
+    backdrop-filter: blur(12px);
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    cursor: inherit;
+
+    z-index: 20;
+
+    transition: 0.4s ease;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.prev {
+    left: 30px;
+}
+
+.next {
+    right: 30px;
+}
+
+/* =========================
+   SLIDER DOTS
+========================= */
+
+.slider-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 14px;
+
+    z-index: 20;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    cursor: inherit;
+
+    background: rgba(255, 255, 255, 0.35);
+
+    transition: 0.4s ease;
+}
+
+.dot.active {
+    background: var(--accent);
+    width: 20px;
+    border-radius: 50px;
+    transform: scale(1.2);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    position: relative;
+
+    z-index: 200;
+
+    width: 100%;
+
+    padding: 24px 4vw;
+
+    border-top: 1px solid var(--border);
+
+    background: var(--bg);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+/* =========================
+   FOOTER LEFT
+========================= */
+
+.footer-left {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+/* =========================
+   DESKTOP SOCIALS
+========================= */
+
+.desktop-socials {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.desktop-socials a {
+    width: 44px;
+    height: 44px;
+cursor: inherit;
+    border-radius: 50%;
+
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    color: var(--text);
+
+    transition: var(--transition);
+}
+
+.desktop-socials a:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+
+    color: white;
+}
+
+/* =========================
+   MOBILE SOCIAL
+========================= */
+
+.mobile-social-wrapper {
+    display: none;
+    position: relative;
+}
+
+.mobile-social-btn {
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    outline: none;
+
+    cursor: inherit;
+
+    border-radius: 50%;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    color: var(--text);
+
+    font-size: 1rem;
+}
+
+/* =========================
+   MOBILE SOCIAL MENU
+========================= */
+
+.mobile-social-menu {
+    position: absolute;
+    left: 0;
+    bottom: 60px;
+
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(10px);
+
+    transition: var(--transition);
+}
+
+.mobile-social-menu.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+.mobile-social-menu a {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+    cursor:inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    color: var(--text);
+
+    transition: var(--transition);
+}
+
+.mobile-social-menu a:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+
+    color: white;
+}
+
+/* =========================
+   FOOTER CENTER
+========================= */
+
+.footer-center {
+    position: relative;
+
+    width: 320px;
+
+    z-index: 9999;
+}
+
+/* =========================
+   DROPDOWN BUTTON
+========================= */
+
+.footer-dropdown-btn {
+    width: 100%;
+
+    padding: 14px 0;
+
+    background: none;
+    border: none;
+
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: var(--text);
+
+    cursor: inherit;
+
+    font-size: 0.95rem;
+
+    transition: var(--transition);
+}
+
+/* =========================
+   DROPDOWN
+========================= */
+
+.footer-dropdown {
+    position: absolute;
+    left: 0;
+    bottom: 65px;
+
+    width: 100%;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(20px);
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(10px);
+
+    z-index: 999999;
+
+    transition: var(--transition);
+}
+
+.footer-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+.footer-dropdown a {
+    padding: 16px 18px;
+
+    text-decoration: none;
+    cursor: inherit;
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text);
+
+    transition: var(--transition);
+}
+
+.footer-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.footer-dropdown a:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* =========================
+   FOOTER RIGHT
+========================= */
+
+.footer-right {
+    flex-shrink: 0;
+}
+
+.footer-right p {
+    color: var(--muted);
+
+    font-size: 0.9rem;
+
+    white-space: nowrap;
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:768px) {
+
+    /* HEADER */
 
     .header {
         height: 90px;
@@ -357,8 +836,95 @@ body.light-mode .toggle-circle {
         letter-spacing: 0.22em;
     }
 
+    /* MENU */
+
     .fullscreen-menu a {
         font-size: 2.2rem;
+    }
+
+    /* HERO */
+
+    .slider-btn {
+        width: 48px;
+        height: 48px;
+
+        font-size: 1rem;
+    }
+
+    .prev {
+        left: 16px;
+    }
+
+    .next {
+        right: 16px;
+    }
+
+    .slider-dots {
+        bottom: 24px;
+    }
+
+    /* FOOTER */
+
+    .footer {
+        padding: 18px 16px;
+
+        gap: 14px;
+    }
+
+    /* HIDE DESKTOP */
+
+    .desktop-socials {
+        display: none;
+    }
+
+    /* SHOW MOBILE */
+
+    .mobile-social-wrapper {
+        display: flex;
+        flex-shrink: 0;
+    }
+
+    /* CENTER */
+
+    .footer-center {
+        width: auto;
+        flex: 1;
+
+        max-width: 170px;
+    }
+
+    .footer-dropdown-btn {
+        padding: 10px 0;
+
+        font-size: 0.78rem;
+    }
+
+    .footer-dropdown {
+        bottom: 56px;
+    }
+
+    .footer-dropdown a {
+        padding: 14px;
+
+        font-size: 0.78rem;
+    }
+
+    /* COPYRIGHT */
+
+    .footer-right p {
+        font-size: 0.68rem;
+    }
+
+}
+
+/* =========================
+   FORCE HIDE MOBILE MENU
+========================= */
+
+@media(min-width:769px) {
+
+    .mobile-social-wrapper {
+        display: none !important;
     }
 
 }
