@@ -13,7 +13,7 @@ body {
     height: 100%;
     overflow: hidden;
     /* disables page scroll */
-    font-family: 'Inter', sans-serif;
+    font-family: "Google Sans Flex", sans-serif;
     scroll-behavior: smooth;
 }
 /* =========================
@@ -281,7 +281,7 @@ body.light-mode .toggle-circle {
     font-size: 0.78rem;
 
     letter-spacing: 0.3em;
-
+    font-family: 'Google Sans Flex', sans-serif;
     text-transform: uppercase;
 }
 
@@ -580,7 +580,7 @@ flex: 0 0 auto;
     padding: 16px 3vw;
 
     border-top: 1px solid var(--border);
-
+    font-family: 'Google Sans Flex', sans-serif;
     background: var(--bg);
 
     display: flex;
@@ -717,7 +717,7 @@ cursor: inherit;
     transition: var(--transition);
 }
 
-.mobile-social-menu a:hover {
+.mobile-social-menu a:hover, .mobile-social-btn:hover {
     background: var(--accent);
     border-color: var(--accent);
 
@@ -759,7 +759,7 @@ cursor: inherit;
     cursor: inherit;
 
     font-size: 0.95rem;
-
+font-family: 'Google Sans Flex', sans-serif;
     transition: var(--transition);
 }
 
@@ -767,7 +767,7 @@ cursor: inherit;
    DROPDOWN
 ========================= */
 
-.footer-dropdown {
+.footer-dropdown {font-family: 'Google Sans Flex', sans-serif;
     position: absolute;
     left: 0;
     bottom: 65px;
