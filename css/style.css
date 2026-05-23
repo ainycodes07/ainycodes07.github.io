@@ -1,7 +1,6 @@
 /* =========================
    RESET
 ========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -11,11 +10,12 @@
 html,
 body {
     width: 100%;
-    overflow-x: hidden;
+    height: 100%;
+    overflow: hidden;
+    /* disables page scroll */
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
 }
-
 /* =========================
    VARIABLES
 ========================= */
@@ -28,7 +28,7 @@ body {
     --surface: #141318;
     --border: #24222B;
     --accent: #8B7EC8;
-
+--header-h: 90px;
     --transition: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -43,22 +43,23 @@ body.light-mode {
 }
 
 /* =========================
-   BODY
+   BODY LAYOUT (CRITICAL FIX)
 ========================= */
 
 body {
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 
     background: var(--bg);
     color: var(--text);
 
-    transition:
-        background var(--transition),
+    transition: background var(--transition),
         color var(--transition);
-}
-body {
+
     cursor: none;
 }
+
 /* =========================
    CUSTOM CURSOR
 ========================= */
@@ -158,15 +159,12 @@ body.light-mode .light-loader-logo {
    HEADER
 ========================= */
 
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
+.header {flex: 0 0 var(--header-h);
 
     width: 100%;
-    height: 100px;
+    height: var(--header-h);
 
-    padding: 0 4vw;
+    padding: 0 3vw;
 
     display: flex;
     align-items: center;
@@ -175,8 +173,9 @@ body.light-mode .light-loader-logo {
     z-index: 1000;
 
     background: var(--bg);
-
     border-bottom: 1px solid var(--border);
+
+    position: relative;
 
     transition: var(--transition);
 }
@@ -391,13 +390,11 @@ cursor: inherit;
    HERO
 ========================= */
 
-.hero {
-    width: 100%;
-    height: 90vh;
-
+.hero {flex: 1 1 auto;
+    min-height: 0;
     position: relative;
-
     overflow: hidden;
+    z-index: 1;
 }
 
 /* =========================
@@ -423,7 +420,9 @@ cursor: inherit;
 
     pointer-events: none;
 
-    transition: opacity 1s ease;
+    transition: opacity 1s ease;display: flex;
+        align-items: center;
+        justify-content: center;
 }
 
 .slide.active {
@@ -470,7 +469,7 @@ cursor: inherit;
 }
 
 .slide:nth-child(3) {
-    background: #011e19;
+    background: #015928;
 }
 
 .slide:nth-child(4) {
@@ -573,12 +572,12 @@ cursor: inherit;
 
 .footer {
     position: relative;
-
+flex: 0 0 auto;
     z-index: 200;
 
     width: 100%;
 
-    padding: 24px 4vw;
+    padding: 16px 3vw;
 
     border-top: 1px solid var(--border);
 
@@ -845,6 +844,9 @@ cursor: inherit;
 ========================= */
 
 @media(max-width:768px) {
+:root {
+        --header-h: 90px;
+    }
 
     /* HEADER */
 
@@ -922,7 +924,7 @@ cursor: inherit;
     /* FOOTER */
 
     .footer {
-        padding: 18px 16px;
+        padding: 14px 14px;
 
         gap: 14px;
     }
