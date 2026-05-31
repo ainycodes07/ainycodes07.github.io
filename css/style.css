@@ -16,6 +16,7 @@ body {
     font-family: "Google Sans Flex", sans-serif;
     scroll-behavior: smooth;
 }
+
 /* =========================
    VARIABLES
 ========================= */
@@ -28,7 +29,7 @@ body {
     --surface: #141318;
     --border: #24222B;
     --accent: #8B7EC8;
---header-h: 90px;
+    --header-h: 90px;
     --transition: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -159,7 +160,8 @@ body.light-mode .light-loader-logo {
    HEADER
 ========================= */
 
-.header {flex: 0 0 var(--header-h);
+.header {
+    flex: 0 0 var(--header-h);
 
     width: 100%;
     height: var(--header-h);
@@ -374,7 +376,7 @@ body.light-mode .toggle-circle {
     text-decoration: none;
 
     font-family: 'Playfair Display', serif;
-cursor: inherit;
+    cursor: inherit;
     font-size: 3rem;
 
     color: var(--text);
@@ -390,7 +392,8 @@ cursor: inherit;
    HERO
 ========================= */
 
-.hero {flex: 1 1 auto;
+.hero {
+    flex: 1 1 auto;
     min-height: 0;
     position: relative;
     overflow: hidden;
@@ -420,9 +423,10 @@ cursor: inherit;
 
     pointer-events: none;
 
-    transition: opacity 1s ease;display: flex;
-        align-items: center;
-        justify-content: center;
+    transition: opacity 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .slide.active {
@@ -460,6 +464,7 @@ cursor: inherit;
     transition: transform 0.6s ease, filter 0.6s ease;
     will-change: transform, filter;
 }
+
 .slide:nth-child(1) {
     background: #ff790b;
 }
@@ -475,6 +480,7 @@ cursor: inherit;
 .slide:nth-child(4) {
     background: #511e28;
 }
+
 .slide:nth-child(5) {
     background: #f3d978;
 }
@@ -483,6 +489,7 @@ cursor: inherit;
     transform: translateY(-8px) scale(1.02);
     filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.5));
 }
+
 /* =========================
    SLIDER BUTTONS
 ========================= */
@@ -572,7 +579,7 @@ cursor: inherit;
 
 .footer {
     position: relative;
-flex: 0 0 auto;
+    flex: 0 0 auto;
     z-index: 200;
 
     width: 100%;
@@ -614,7 +621,7 @@ flex: 0 0 auto;
 .desktop-socials a {
     width: 44px;
     height: 44px;
-cursor: inherit;
+    cursor: inherit;
     border-radius: 50%;
 
     border: 1px solid var(--border);
@@ -705,7 +712,7 @@ cursor: inherit;
     border: 1px solid var(--border);
 
     background: var(--surface);
-    cursor:inherit;
+    cursor: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -717,7 +724,8 @@ cursor: inherit;
     transition: var(--transition);
 }
 
-.mobile-social-menu a:hover, .mobile-social-btn:hover {
+.mobile-social-menu a:hover,
+.mobile-social-btn:hover {
     background: var(--accent);
     border-color: var(--accent);
 
@@ -759,7 +767,7 @@ cursor: inherit;
     cursor: inherit;
 
     font-size: 0.95rem;
-font-family: 'Google Sans Flex', sans-serif;
+    font-family: 'Google Sans Flex', sans-serif;
     transition: var(--transition);
 }
 
@@ -767,7 +775,8 @@ font-family: 'Google Sans Flex', sans-serif;
    DROPDOWN
 ========================= */
 
-.footer-dropdown {font-family: 'Google Sans Flex', sans-serif;
+.footer-dropdown {
+    font-family: 'Google Sans Flex', sans-serif;
     position: absolute;
     left: 0;
     bottom: 65px;
@@ -840,149 +849,169 @@ font-family: 'Google Sans Flex', sans-serif;
 }
 
 /* =========================
-   MOBILE
+   MOBILE RESPONSIVE SYSTEM
 ========================= */
-
 @media(max-width:768px) {
-:root {
-        --header-h: 90px;
+    :root {
+        --header-h: 70px;
+        /* Slimmer header for mobile */
     }
 
-    /* HEADER */
+    body {
+        cursor: default;
+        /* Brings back normal touch tapping */
+    }
 
+    /* 1. NUKE CUSTOM CURSOR ON MOBILE */
+    .cursor-dot,
+    .cursor-ring {
+        display: none !important;
+    }
+
+    /* 2. HEADER TEXT & LAYOUT */
     .header {
-        height: 90px;
-        padding: 0 20px;
+        height: var(--header-h);
+        padding: 0 16px;
+    }
+
+    .header-left {
+        gap: 10px;
     }
 
     .header-logo {
-        width: 48px;
-    }
-
-    .theme-toggle {
-        width: 56px;
-        height: 30px;
-    }
-
-    .toggle-circle {
-        width: 20px;
-        height: 20px;
-    }
-
-    body.light-mode .toggle-circle {
-        left: 29px;
+        width: 40px;
     }
 
     .header-center h1 {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+        white-space: nowrap;
+        /* Keeps your name on one line */
     }
 
     .header-center p {
-        font-size: 0.62rem;
-        letter-spacing: 0.22em;
+        font-size: 0.58rem;
+        letter-spacing: 0.18em;
     }
 
-    /* MENU */
+    /* 3. SHRINK TOGGLE & FIX TRACK SLIDE */
+    .theme-toggle {
+        width: 48px;
+        height: 26px;
+    }
 
+    .toggle-circle {
+        width: 18px;
+        height: 18px;
+        top: 3px;
+        left: 3px;
+    }
+
+    body.light-mode .toggle-circle {
+        left: 25px;
+        /* Keeps circle inside the capsule track */
+    }
+
+    /* 4. SHRINK HAMBURGER MENU */
+    .menu-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .menu-btn span {
+        width: 22px;
+    }
+
+    .menu-btn span:nth-child(1) {
+        top: 16px;
+    }
+
+    .menu-btn span:nth-child(2) {
+        top: 24px;
+    }
+
+    .menu-btn.active span:nth-child(1) {
+        top: 20px;
+    }
+
+    .menu-btn.active span:nth-child(2) {
+        top: 20px;
+    }
+
+    /* 5. FULLSCREEN NAV MENU TEXT */
     .fullscreen-menu a {
         font-size: 2.2rem;
     }
 
-    /* HERO */
+    /* 6. HERO IMAGE RESIZING */
+    .slide img {
+        max-width: 85%;
+        max-height: 65%;
+    }
 
     .slider-btn {
-        width: 48px;
-        height: 48px;
-
-        font-size: 1rem;
+        width: 44px;
+        height: 44px;
+        font-size: 0.95rem;
     }
 
     .prev {
-        left: 16px;
+        left: 12px;
     }
 
     .next {
-        right: 16px;
+        right: 12px;
     }
 
     .slider-dots {
-        bottom: 24px;
+        bottom: 20px;
     }
 
-            .slide img {
-                max-width: 90%;
-                max-height: 70%;
-            }
-    
-            .slider-btn {
-                width: 44px;
-                height: 44px;
-                font-size: 1rem;
-            }
-        
-
-    /* FOOTER */
-
+    /* 7. FOOTER ADJUSTMENTS */
     .footer {
-        padding: 14px 14px;
-
-        gap: 14px;
+        padding: 12px 16px;
+        gap: 10px;
     }
-
-    /* HIDE DESKTOP */
 
     .desktop-socials {
         display: none;
     }
-
-    /* SHOW MOBILE */
 
     .mobile-social-wrapper {
         display: flex;
         flex-shrink: 0;
     }
 
-    /* CENTER */
-
     .footer-center {
         width: auto;
         flex: 1;
-
-        max-width: 170px;
+        max-width: 140px;
+        /* Stops text crashing into copyright */
     }
 
     .footer-dropdown-btn {
-        padding: 10px 0;
-
-        font-size: 0.78rem;
+        padding: 8px 0;
+        font-size: 0.75rem;
     }
 
     .footer-dropdown {
-        bottom: 56px;
+        bottom: 50px;
     }
 
     .footer-dropdown a {
-        padding: 14px;
-
-        font-size: 0.78rem;
+        padding: 12px;
+        font-size: 0.75rem;
     }
-
-    /* COPYRIGHT */
 
     .footer-right p {
-        font-size: 0.68rem;
+        font-size: 0.65rem;
     }
-
 }
 
 /* =========================
-   FORCE HIDE MOBILE MENU
+   FORCE HIDE MOBILE MENU OVERRIDES
 ========================= */
-
 @media(min-width:769px) {
-
     .mobile-social-wrapper {
         display: none !important;
     }
-
 }
