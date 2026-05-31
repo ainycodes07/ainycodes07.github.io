@@ -1015,3 +1015,195 @@ body.light-mode .toggle-circle {
         display: none !important;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   ABOUT PAGE
+========================= */
+
+.about-page {
+    width: 100%;
+}
+
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-section {
+    width: min(1200px, 92%);
+    margin: 8rem auto;
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.about-image-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.about-image-wrap img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.birth-tag {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+
+    padding: .75rem 1rem;
+
+    background: rgba(12, 12, 15, .9);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    color: var(--text);
+
+    border-radius: 999px;
+
+    font-size: .85rem;
+    letter-spacing: .08em;
+}
+
+.about-label {
+    color: var(--accent);
+    font-size: .85rem;
+    letter-spacing: .2em;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.about-content h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: .95;
+    margin-bottom: .75rem;
+}
+
+.about-content h2 {
+    color: var(--muted);
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.about-content p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 1rem;
+}
+
+.about-content p a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.about-content p a:hover {
+    opacity: .7;
+}
+
+.about-actions {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border-radius: 999px;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(255, 255, 255, .1);
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+}
+
+
+/* =========================
+   TECH STACK MARQUEE
+========================= */
+
+.tech-marquee-section {
+    margin: 8rem 0;
+}
+
+.tech-marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.tech-track {
+    display: flex;
+    width: max-content;
+    gap: 4rem;
+    animation: marquee 25s linear infinite;
+}
+
+.tech-track span {
+    font-size: 1rem;
+    color: var(--text);
+    letter-spacing: .08em;
+    white-space: nowrap;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .about-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-content h1 {
+        font-size: 3rem;
+    }
+
+}
