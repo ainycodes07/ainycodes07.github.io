@@ -17,7 +17,7 @@ body {
     width: 100%;
     min-height: 100vh;
 
-    ``` font-family: "Google Sans Flex", sans-serif;
+     font-family: "Google Sans Flex", sans-serif;
 
     background: var(--bg);
     color: var(--text);
@@ -27,7 +27,7 @@ body {
         color var(--transition);
 
     cursor: none;
-    ```
+    
 }
 
 img {
@@ -57,7 +57,7 @@ VARIABLES
 
 :root {
 
-    ``` --bg: #0C0C0F;
+     --bg: #0C0C0F;
     --text: #E8E6EF;
     --muted: #7A7785;
     --surface: #141318;
@@ -71,18 +71,18 @@ VARIABLES
             1,
             0.36,
             1);
-    ```
+    
 }
 
 body.light-mode {
 
-    ``` --bg: #F4F3F8;
+     --bg: #F4F3F8;
     --text: #1A1820;
     --muted: #635F72;
     --surface: #ECEAF4;
     --border: #D9D5E3;
     --accent: #6B5FB5;
-    ```
+    
 }
 
 /* =========================
@@ -93,7 +93,7 @@ CUSTOM CURSOR
     width: 10px;
     height: 10px;
 
-    ``` position: fixed;
+     position: fixed;
     top: 0;
     left: 0;
 
@@ -104,14 +104,14 @@ CUSTOM CURSOR
     pointer-events: none;
 
     z-index: 99999;
-    ```
+    
 }
 
 .cursor-ring {
     width: 40px;
     height: 40px;
 
-    ``` position: fixed;
+     position: fixed;
     top: 0;
     left: 0;
 
@@ -121,7 +121,7 @@ CUSTOM CURSOR
     pointer-events: none;
 
     z-index: 99998;
-    ```
+    
 }
 
 /* =========================
@@ -132,7 +132,7 @@ LOADER
     position: fixed;
     inset: 0;
 
-    ``` display: flex;
+     display: flex;
     align-items: center;
     justify-content: center;
 
@@ -143,7 +143,7 @@ LOADER
     z-index: 999999;
 
     transition: opacity .8s ease;
-    ```
+    
 }
 
 .loader.hide {
@@ -159,14 +159,14 @@ LOADER
 .loader-logo {
     width: 100%;
 
-    ``` clip-path: inset(0 0 0 100%);
+     clip-path: inset(0 0 0 100%);
 
     animation:
         logoReveal 1.4s cubic-bezier(0.22,
             1,
             0.36,
             1) forwards;
-    ```
+    
 }
 
 .light-loader-logo {
@@ -183,7 +183,7 @@ body.light-mode .light-loader-logo {
 
 @keyframes logoReveal {
 
-    ``` from {
+     from {
         clip-path: inset(0 0 0 100%);
         opacity: .15;
     }
@@ -193,7 +193,7 @@ body.light-mode .light-loader-logo {
         opacity: 1;
     }
 
-    ```
+    
 }
 
 /* =========================
@@ -202,7 +202,7 @@ HEADER
 
 .header {
 
-    ``` width: 100%;
+     width: 100%;
     height: var(--header-h);
 
     padding: 0 3vw;
@@ -220,7 +220,7 @@ HEADER
     z-index: 1000;
 
     transition: var(--transition);
-    ```
+    
 }
 
 .header-left {
@@ -252,7 +252,7 @@ THEME TOGGLE
 
 .theme-toggle {
 
-    ``` width: 62px;
+     width: 62px;
     height: 34px;
 
     position: relative;
@@ -265,12 +265,12 @@ THEME TOGGLE
     cursor: inherit;
 
     transition: var(--transition);
-    ```
+    
 }
 
 .toggle-circle {
 
-    ``` position: absolute;
+     position: absolute;
 
     top: 4px;
     left: 4px;
@@ -283,7 +283,7 @@ THEME TOGGLE
     background: var(--accent);
 
     transition: var(--transition);
-    ```
+    
 }
 
 body.light-mode .toggle-circle {
@@ -300,18 +300,18 @@ HEADER CENTER
 
 .header-center h1 {
 
-    ``` font-family: 'Playfair Display', serif;
+     font-family: 'Playfair Display', serif;
 
     font-size: 1.5rem;
     font-weight: 600;
 
     letter-spacing: .03em;
-    ```
+    
 }
 
 .header-center p {
 
-    ``` margin-top: 2px;
+     margin-top: 2px;
 
     color: var(--muted);
 
@@ -320,7 +320,7 @@ HEADER CENTER
     letter-spacing: .3em;
 
     text-transform: uppercase;
-    ```
+    
 }
 
 /* =========================
@@ -329,7 +329,7 @@ MENU BUTTON
 
 .menu-btn {
 
-    ``` width: 52px;
+     width: 52px;
     height: 52px;
 
     position: relative;
@@ -338,12 +338,12 @@ MENU BUTTON
     background: none;
 
     cursor: inherit;
-    ```
+    
 }
 
 .menu-btn span {
 
-    ``` position: absolute;
+     position: absolute;
     left: 50%;
 
     width: 30px;
@@ -354,7 +354,7 @@ MENU BUTTON
     transform: translateX(-50%);
 
     transition: var(--transition);
-    ```
+    
 }
 
 .menu-btn span:nth-child(1) {
@@ -381,7 +381,7 @@ FULLSCREEN MENU
 
 .fullscreen-menu {
 
-    ``` position: fixed;
+     position: fixed;
     inset: 0;
 
     display: flex;
@@ -396,7 +396,7 @@ FULLSCREEN MENU
     z-index: 900;
 
     transition: var(--transition);
-    ```
+    
 }
 
 .fullscreen-menu.active {
@@ -412,14 +412,14 @@ FULLSCREEN MENU
 
 .fullscreen-menu a {
 
-    ``` font-family: 'Playfair Display', serif;
+     font-family: 'Playfair Display', serif;
 
     font-size: 3rem;
 
     color: var(--text);
 
     transition: var(--transition);
-    ```
+    
 }
 
 .fullscreen-menu a:hover {
@@ -432,7 +432,7 @@ FOOTER
 
 .footer {
 
-    ``` width: 100%;
+     width: 100%;
 
     padding: 16px 3vw;
 
@@ -449,7 +449,7 @@ FOOTER
     border-top: 1px solid var(--border);
 
     z-index: 200;
-    ```
+    
 }
 
 /* =========================
@@ -470,7 +470,7 @@ FOOTER LEFT
 
 .desktop-socials a {
 
-    ``` width: 44px;
+     width: 44px;
     height: 44px;
 
     display: flex;
@@ -486,16 +486,16 @@ FOOTER LEFT
     color: var(--text);
 
     transition: var(--transition);
-    ```
+    
 }
 
 .desktop-socials a:hover {
 
-    ``` background: var(--accent);
+     background: var(--accent);
     border-color: var(--accent);
 
     color: #fff;
-    ```
+    
 }
 
 /* =========================
@@ -509,7 +509,7 @@ MOBILE SOCIAL
 
 .mobile-social-btn {
 
-    ``` width: 48px;
+     width: 48px;
     height: 48px;
 
     border-radius: 50%;
@@ -521,12 +521,12 @@ MOBILE SOCIAL
     color: var(--text);
 
     cursor: inherit;
-    ```
+    
 }
 
 .mobile-social-menu {
 
-    ``` position: absolute;
+     position: absolute;
 
     left: 0;
     bottom: 60px;
@@ -541,21 +541,21 @@ MOBILE SOCIAL
     transform: translateY(10px);
 
     transition: var(--transition);
-    ```
+    
 }
 
 .mobile-social-menu.active {
 
-    ``` opacity: 1;
+     opacity: 1;
     visibility: visible;
 
     transform: translateY(0);
-    ```
+    
 }
 
 .mobile-social-menu a {
 
-    ``` width: 48px;
+     width: 48px;
     height: 48px;
 
     display: flex;
@@ -571,17 +571,17 @@ MOBILE SOCIAL
     color: var(--text);
 
     transition: var(--transition);
-    ```
+    
 }
 
 .mobile-social-menu a:hover,
 .mobile-social-btn:hover {
 
-    ``` background: var(--accent);
+     background: var(--accent);
     border-color: var(--accent);
 
     color: #fff;
-    ```
+    
 }
 
 /* =========================
@@ -590,17 +590,17 @@ FOOTER CENTER
 
 .footer-center {
 
-    ``` width: 320px;
+     width: 320px;
 
     position: relative;
 
     z-index: 9999;
-    ```
+    
 }
 
 .footer-dropdown-btn {
 
-    ``` width: 100%;
+     width: 100%;
 
     padding: 14px 0;
 
@@ -616,12 +616,12 @@ FOOTER CENTER
     color: var(--text);
 
     cursor: inherit;
-    ```
+    
 }
 
 .footer-dropdown {
 
-    ``` position: absolute;
+     position: absolute;
 
     left: 0;
     bottom: 65px;
@@ -643,26 +643,26 @@ FOOTER CENTER
     transform: translateY(10px);
 
     transition: var(--transition);
-    ```
+    
 }
 
 .footer-dropdown.active {
 
-    ``` opacity: 1;
+     opacity: 1;
     visibility: visible;
 
     transform: translateY(0);
-    ```
+    
 }
 
 .footer-dropdown a {
 
-    ``` padding: 16px 18px;
+     padding: 16px 18px;
 
     border-bottom: 1px solid var(--border);
 
     transition: var(--transition);
-    ```
+    
 }
 
 .footer-dropdown a:last-child {
@@ -671,10 +671,10 @@ FOOTER CENTER
 
 .footer-dropdown a:hover {
 
-    ``` background: var(--accent);
+     background: var(--accent);
 
     color: #fff;
-    ```
+    
 }
 
 /* =========================
@@ -687,12 +687,12 @@ FOOTER RIGHT
 
 .footer-right p {
 
-    ``` color: var(--muted);
+     color: var(--muted);
 
     font-size: .9rem;
 
     white-space: nowrap;
-    ```
+    
 }
 
 /* =========================
@@ -701,7 +701,7 @@ HEADER + FOOTER RESPONSIVE
 
 @media (max-width: 768px) {
 
-    ```:root {
+    :root {
         --header-h: 70px;
     }
 
@@ -818,14 +818,14 @@ HEADER + FOOTER RESPONSIVE
         font-size: .65rem;
     }
 
-    ```
+    
 }
 
 @media (min-width: 769px) {
 
-    ``` .mobile-social-wrapper {
+     .mobile-social-wrapper {
         display: none !important;
     }
 
-    ```
+    
 }
