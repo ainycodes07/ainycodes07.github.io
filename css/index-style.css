@@ -55,7 +55,7 @@ SLIDES
     align-items: center;
     justify-content: center;
 
-    opacity: 1 !important;
+    opacity: 0;
 
     pointer-events: none;
 
